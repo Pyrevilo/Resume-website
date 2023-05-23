@@ -1,0 +1,31 @@
+h1 {
+    border: 2px solid red;
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #1f2937;
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+.choices {
+    border: 2px solid orange;
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    margin: 0em 1em 0em 1em; /*top right bottom left */
+    padding: 4px 10px 4px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+input:hover {
+    background-color: gray;
+}
+
+.output {
+    display: flex;
+    justify-content: center;
+}
