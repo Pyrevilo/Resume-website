@@ -1,5 +1,5 @@
 const btn = document.querySelectorAll('.choice');
-const choices = ["rock", "paper", "scissor"];
+const choices = ["rock", "paper", "scissors"];
 
 btn.forEach((button) => {
     button.addEventListener('click', () => {
@@ -10,24 +10,36 @@ btn.forEach((button) => {
     })
 })
 
+var lostCounter = 0;
+var winCounter = 0;
+var tieCounter = 0;
+
 function playRound (playerSelection, computerSelection) {
-    const output = document.querySelector('#output');
-    const content = document.createElement('div');
-    content.classList.add('content');
+
     if ((playerSelection == choices[0] && computerSelection == choices[1]) || 
         (playerSelection == choices[1] && computerSelection == choices[2]) ||
         (playerSelection == choices[2] && computerSelection == choices[0])) {
-        content.textContent = ("winner");
-        output.appendChild(content);
+        lostCounter++;
+        document.getElementById('lost').innerHTML = "Lose Score: " + lostCounter;
+        document.getElementById('output').innerHTML = "You LOST!";
+        document.getElementById('output2').innerHTML = "The computer chose " + computerSelection;
+        return;
     }
     if ((playerSelection == choices[0] && computerSelection == choices[2]) ||
         (playerSelection == choices[1] && computerSelection == choices[0]) ||
         (playerSelection == choices[2] && computerSelection == choices[1])) {
-        console.log("Winner");
+        winCounter++;
+        document.getElementById('win').innerHTML = "Win Score: " + winCounter;
+        document.getElementById('output').innerHTML = "You WON!";
+        document.getElementById('output2').innerHTML = "The computer chose " + computerSelection;
         return;
     }
     else {
-        console.log("Tie");
+        tieCounter++;
+        document.getElementById('tie').innerHTML = "Tie Score: " + tieCounter;
+        document.getElementById('output').innerHTML = "You TIED!";
+        document.getElementById('output2').innerHTML = "The computer chose " + computerSelection;
         return;
     }
 }
+
