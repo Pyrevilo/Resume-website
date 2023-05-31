@@ -10,9 +10,7 @@ h1 {
 .instruct, .selections, .counter, .result {
     display: flex;
     justify-content: center;
-}
-
-.selections {
+    text-align: center;
 }
 
 button {
