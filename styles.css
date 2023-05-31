@@ -1,3 +1,4 @@
+/* Rock paper scissors css */
 h1 {
     font-size: 2.5em;
     font-weight: bold;
@@ -40,4 +41,38 @@ button {
 
 .choice:active {
     transform: scale(1.2);
+}
+
+/*etch A sketch css */
+.gridContainer {
+    display: flex;
+    justify-content: center;
+    border: solid 2px orange;
+}
+
+.grid {
+    border: brown solid 2px;
+    display: flex;
+    padding: 3px;
+    
+
+    /* aligns it along vertical axis */
+    justify-content: center;
+    /* align along horizontal axis */
+    align-items: center;
+}
+/* first line of grids */
+.segment {
+    border: solid lightslategray 2px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.pixel {
+    border: solid blueviolet 2px;
+}
+
+.pixel:focus {
+    background-color: aqua;
 }
