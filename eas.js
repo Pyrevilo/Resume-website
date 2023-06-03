@@ -18,6 +18,7 @@ for (let i =0; i <= 16; i++) {
         }
     }
 
+//changes color of pixel div when hovering mouse over
 for (let i = 0; i <289; i++){
     pixel[i].addEventListener('mouseover', trail, false);
     function trail() {
