@@ -1,0 +1,54 @@
+/*etch A sketch css */
+h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 2.5em;
+}
+
+.eas_instruct {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    max-width: 100px;
+    margin-bottom: 10px;
+}
+
+.gridContainer {
+    display: flex;
+    justify-content: center;
+    border: solid 2px orange;
+}
+
+.grid {
+    border: brown solid 2px;
+    display: flex;
+    padding: 3px;
+    
+
+    /* aligns it along vertical axis */
+    justify-content: center;
+    /* align along horizontal axis */
+    align-items: center;
+}
+/* first line of grids */
+.segment {
+    /* border: solid lightslategray 2px; */
+    display: flex;
+    flex-direction: column;
+
+}
+/*each pixel in grid */
+.pixel {
+    /*border: solid blueviolet 2px; */
+    height: 20px;
+    width: 20px;
+}
+
+#refresh {
+    background: lightgray;
+    font-size: 1em;
+    border-radius: 5px;
+}
