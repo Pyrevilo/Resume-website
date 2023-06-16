@@ -4,28 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
-    <title>Try it!</title>
+    <link rel="stylesheet" href="./EASstyles.css">
+    <title>Etch a sketch</title>
 </head>
 <body>
-    <!-- title of page-->
-    <h1>Etch-A-Sketch</h1>
-    
-    <div class="eas_instruct">
-        <p class="instruct">Start drawing or change the grid size below!</p>
-        <!-- grid size input value-->
-        <input type="number" id="userInput" min="16" max="100">
-        <button type= "button" id="refresh">Construct Grid</button>
-    </div>
-
-    <div class="gridContainer">
-        <!-- Create a 16x16 of divs in js-->
-        <div class="grid">
-
+    <div><h1>Etch a sketch</h1></div>
+    <div class="content">
+        <div class="grid"></div>
+        <div class="buttons">
+            <button onclick="changeColor('black')">Black</button>
+            <button onclick="changeColor('white')">Eraser</button>
+            <button>Reset</button>
+        </div>
+        <div>
+            <!-- onchange calls changeSize function in javascript inputting value in current field form-->
+            <input 
+                type="text" 
+                placeholder="Grid Size"                 
+                onchange="changeSize(this.value)">
+            <!-- ?? button is defaulted to submit form when no eventlistener is added ??-->
+            <button>Change size</button>
         </div>
     </div>
-    
-    <!-- js script for etch a sketch-->
-    <script src="eas.js"></script>
 </body>
+<script src="eas.js"></script>
 </html>

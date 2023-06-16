@@ -1,49 +1,44 @@
-//selects grid div
-const containerGrid = document.querySelector('.grid');
-var pixel = document.getElementsByClassName('pixel');
+let color = 'black';
 
-var gridSize = 16;
+//create grid
+function createGrid (size) {
+    let board = document.querySelector(".grid");
+    //removes existing divs to be replaced when creating grid
+    let squares = document.querySelectorAll("div");
+    squares.forEach((div) => div.remove());
+    //sets board style to grid-template-columns/rows in css
+    //this makes grid fit within constraints of field size (500px^2)
+    board.style.gridTemplateColumns = `repeat(${size} , 1fr)`;
+    board.style.gridTemplateRows = `repeat(${size} , 1fr)`;
 
-for (let i =0; i < gridSize; i++) {
-    const grid = document.createElement('div');
-    grid.classList.add('segment');
-    //grid.textContent = i;
-
-    containerGrid.appendChild(grid);
-    for (let k = 0; k <gridSize; k++) {
-        const gridpixel = document.createElement('div');
-        gridpixel.classList.add('pixel');
-        //gridpixel.textContent = k;
-
-        grid.appendChild(gridpixel);
+    let amount = size * size;
+    
+    for (let i = 0; i < amount; i++) {
+        let square = document.createElement('div');
+        square.addEventListener('mouseover', colorSquare)
+        square.style.backgroundColor = "black";
+        board.insertAdjacentElement("beforeend", square);
     }
 }
 
-//changes color of pixel div when hovering mouse over
-for (let i = 0; i <gridSize*gridSize; i++){
-    pixel[i].addEventListener('mouseover', trail, false);
-    function trail() {
-        pixel[i].setAttribute("style", "background-color:lightblue");
+createGrid(10);
+
+//change grid size 
+function changeSize(input) {
+    if (input >=2 && input <=100) {
+        createGrid(input);
+    }
+    else {
+        console.log("Invalid grid size input")
     }
 }
 
-document.getElementById("refresh").onclick = function() {
-    var gridresize = document.getElementById("userInput").value;
-    console.log(gridresize);
-    function createGrid() {
-        for (let i =0; i < gridresize; i++) {
-            const grid = document.createElement('div');
-            grid.classList.add('segment');
-            //grid.textContent = i;
-        
-            containerGrid.appendChild(grid);
-            for (let k = 0; k <gridresize; k++) {
-                const gridpixel = document.createElement('div');
-                gridpixel.classList.add('pixel');
-                //gridpixel.textContent = k;
-        
-                grid.appendChild(gridpixel);
-            }
-        }
-    }
+//sets color of drawing tool
+function colorSquare() {
+    //this refers to the div the event listener is attached to.
+    this.style.backgroundColor = color;
+}
+
+function changeColor(choice) {
+    color = choice;
 }
