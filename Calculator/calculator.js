@@ -1,65 +1,119 @@
 
 let inputNumber = new String("");
-let resultValue = null;
-let tempValue = 0;
-let lastButtonIsOperand = true;
+let lastInput = 0; //(0 = no numbers, 1 = number, 2 = operand)
+let history = [null, null];
+let lastOperator = "";
+let resultValue = 0;
+let decimalClicked = false;
 
-//gets input number as string
+//constructs the string of input numbers
 function number(input) {
+    if (decimalClicked && input=='.') {
+        console.log("Error: decimal point already used");
+        console.log(inputNumber);
+        return;
+    }
+    if (input == '.') {
+        decimalClicked = true;
+    }
     inputNumber += input;
-    console.log(inputNumber);       //TO SEND TO OUTPUT
-    lastButtonPressedisNumerical();
+    lastInput = 1;
+    document.getElementById('result').innerHTML = inputNumber;
+    console.log(inputNumber);
+    return;
 }
 
-//switch cases to perform operand calculations
+//delete last input number
+function backspace() {
+    inputNumber = inputNumber.slice(0, -1);
+    console.log(inputNumber);
+}
+
+//function for formula inputs when button is clicked
 function operations(inputOperator) {
-    if (lastButtonIsOperand) {
-        console.log("Error last button pressed was an operator");
+    if (lastInput == 0) {
+        console.log("No numbers have been input");
         return;
     }
-    //makes sure there is a number to perform operand with        
-    if (resultValue == NaN) {
-        push(inputNumber);
-        console.log("no first value");
-        lastButtonPressedisOperand();
+    if (lastInput == 2) {
+        console.log("last input was operator");
+        lastOperator = inputOperator;
         return;
     }
+    lastInput = 2;
+    decimalClicked = false;
     switch(inputOperator) {
-        case '+':
-            tempValue = resultValue;
-            push(inputNumber);
-            resultValue += tempValue;
-            tempValue = 0;
-            lastButtonPressedisOperand();
-            console.log(resultValue);       //TO SEND TO OUTPUT
+        case('+'):
+            formula();
+            lastOperator = "+";
+            inputNumber = "";
             break;
-        case '-':
-            tempValue = resultValue;
-            push(inputNumber);
-            resultValue = tempValue - resultValue;
-            tempValue = 0;
-            lastButtonPressedisOperand();
-            console.log(resultValue);       //TO SEND TO OUTPUT
-        default:
-            console.log("default");
+        case('-'):
+            formula();
+            lastOperator = "-";
+            inputNumber = "";
+            break;
+        case('*'):
+            formula();
+            lastOperator = "*";
+            inputNumber = "";
+            break;
+        case('/'):
+            formula();
+            lastOperator = "/";
+            inputNumber = "";
+            break;
+        case('**'):
+            formula();
+            lastOperator = "**";
+            inputNumber = "";
+            break;
+        case('='):
+            formula();
+            clearCal();
             break;
     }
 }
 
-//converts string input into a float and assigns it to result value and resets
-function push(input) {
-    lastButtonIsOperand = false;
-    inputNumber = parseFloat(input);
-    resultValue = inputNumber;
+//function for formula inputs
+function formula() {
+    if (history[0] == null) {
+        history[0] = parseFloat(inputNumber);
+        return;
+    }
+    else if (history[1] == null) {
+        history[1] = parseFloat(inputNumber);
+        switch(lastOperator) {
+            case("+"):
+                resultValue = history[0] + history[1];
+                break;
+            case("-"):
+                resultValue = history[0] - history[1];
+                break;
+            case("*"):
+                resultValue = history[0] * history[1];
+                break;
+            case("/"):
+                resultValue = history[0] / history[1];
+                break;
+            case("**"):
+                resultValue = history[0] ** history[1];
+                break;
+                
+        }
+        console.log(resultValue);
+        history[0] = resultValue;
+        history[1] = null;
+        return;
+    }
+}
+
+//resets selected operators and input variables
+function clearCal() {
+    history = [null ,null];
+    lastOperator = "";
     inputNumber = "";
-}
-
-
-//checks if the last button pressed is numerical or an operand.
-//if operand prompts an error
-function lastButtonPressedisNumerical() {
-    lastButtonIsOperand = false;
-}
-function lastButtonPressedisOperand() {
-    lastButtonIsOperand = true;
+    decimalClicked = false;
+    console.log("cleared");
+    return;
 }

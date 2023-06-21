@@ -1,0 +1,35 @@
+.calcBody {
+    border: solid 2px red;
+}
+
+.output {
+    border: solid blue 2px;
+}
+
+.operations, #result {
+    border: solid 2px orange;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.numpad {
+    border: solid 2px green;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    min-width: 85px;
+}
+
+.output {
+    height: 30px;
+    text-align: end;
+}
+
+.inputContainer {
+    flex-direction: row-reverse;
+    display: flex;
+}
+
+.clear {
+    display: flex;
+}
