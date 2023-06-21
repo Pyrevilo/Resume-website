@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./calcStyle.css">
+    <title>Document</title>
+</head>
+<body>
+    <div><h1>Calculator</h1></div>
+    <div class="calcBody">
+        <div class="output"></div>
+        <div class="operations">
+            <button id="addition" onclick="operations('+')">+</button>
+            <button id="subtraction"onclick="operations('-')">-</button>
+            <button id="mutiply">X</button>
+            <button id="division">/</button>
+            <button id="factorial">!</button>
+            <button id="power">^</button>
+            <button id="equals">=</button>
+        </div>
+        <div class="numpad">
+            <button id="1" onclick="number(1)">1</button>
+            <button id="2" onclick="number(2)">2</button>
+            <button id="3" onclick="number(3)">3</button>
+            <button id="4" onclick="number(4)">4</button>
+            <button id="5" onclick="number(5)">5</button>
+            <button id="6" onclick="number(6)">6</button>
+            <button id="7" onclick="number(7)">7</button>
+            <button id="8" onclick="number(8)">8</button>
+            <button id="9" onclick="number(9)">9</button>
+            <button id="0" onclick="number(0)">0</button>
+            <button id="." onclick="number('.')">.</button>
+        </div>
+    </div>
+</body>
+<script src="calculator.js"></script>
+</html>
