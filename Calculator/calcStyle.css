@@ -1,35 +1,77 @@
 .calcBody {
     border: solid 2px red;
+    width: 50vw;
+    min-width: 350px;
+    aspect-ratio: auto 2/3;
 }
 
 .output {
     border: solid blue 2px;
+    height: 10vh;
+    text-align: end;
+}
+
+#result {
+    white-space: pre-wrap;
+    word-break: break-all;
+    width: 48vw;
+    min-width: 330px;
+    font-size: 4vh;
+    margin-top: 3vh;
 }
 
 .operations, #result {
     border: solid 2px orange;
-    display: flex;
-    flex-direction: column;
-    
+    display: grid;
+    flex-grow: 0.3;
+    grid-template-rows: auto;
+    grid-gap: 1vw;
+    padding: 2px 2px 2px 2px;
+}
+
+.misc {
+    display: grid;
+    grid-template: "a b";
+    border: solid 2px brown;
+    height: 7vh;
+    grid-gap: 2vw;
 }
 
 .numpad {
     border: solid 2px green;
     display: grid;
-    grid-template-columns: auto auto auto;
-    min-width: 85px;
-}
-
-.output {
-    height: 30px;
-    text-align: end;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1vw;
+    flex-grow: 1;
+    height: 65vh;
+    padding: 2px 2px 2px 2px;
 }
 
 .inputContainer {
+    border: solid 2px purple;
     flex-direction: row-reverse;
     display: flex;
 }
 
 .clear {
     display: flex;
+}
+
+body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+* {
+    font-family: 'Orbitron', sans-serif;
+    src: url('https://fonts.googleapis.com/css?family=Orbitron')
+}
+
+:not(.header, #result) {
+    font-size: 5vh;
+}
+
+button {
+    border-radius: 10px;
 }

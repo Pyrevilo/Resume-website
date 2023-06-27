@@ -16,6 +16,9 @@ function number(input) {
     if (input == '.') {
         decimalClicked = true;
     }
+    if (inputNumber.length > 20){
+        return;
+    }
     inputNumber += input;
     lastInput = 1;
     document.getElementById('result').innerHTML = inputNumber;
@@ -27,6 +30,7 @@ function number(input) {
 function backspace() {
     inputNumber = inputNumber.slice(0, -1);
     console.log(inputNumber);
+    document.getElementById('result').innerHTML = inputNumber;
 }
 
 //function for formula inputs when button is clicked
@@ -35,6 +39,7 @@ function operations(inputOperator) {
         console.log("No numbers have been input");
         return;
     }
+    
     if (lastInput == 2) {
         console.log("last input was operator");
         lastOperator = inputOperator;
@@ -70,7 +75,9 @@ function operations(inputOperator) {
             break;
         case('='):
             formula();
-            clearCal();
+            inputNumber = "";
+            lastOperator = "";
+            //clearCal();
             break;
     }
 }
@@ -99,9 +106,9 @@ function formula() {
             case("**"):
                 resultValue = history[0] ** history[1];
                 break;
-                
         }
         console.log(resultValue);
+        printOut();
         history[0] = resultValue;
         history[1] = null;
         return;
@@ -116,4 +123,8 @@ function clearCal() {
     decimalClicked = false;
     console.log("cleared");
     return;
+}
+
+function printOut() {
+    document.getElementById('result').innerHTML = (resultValue);
 }
